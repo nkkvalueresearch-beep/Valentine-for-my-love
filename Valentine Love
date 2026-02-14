@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>For My Forever ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #ff4e8a, #ff9ecf);
+    color: white;
+    overflow: hidden;
+}
+
+.container {
+    margin-top: 60px;
+}
+
+h1 {
+    font-size: 42px;
+}
+
+p {
+    font-size: 20px;
+}
+
+img {
+    width: 250px;
+    border-radius: 20px;
+    margin-top: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+button {
+    padding: 12px 25px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin: 15px;
+    transition: 0.3s;
+}
+
+.yes {
+    background-color: white;
+    color: #ff4e8a;
+}
+
+.no {
+    background-color: #ff1e63;
+    color: white;
+    position: absolute;
+}
+
+#message {
+    font-size: 26px;
+    margin-top: 20px;
+    display: none;
+}
+
+#countdown {
+    font-size: 22px;
+    margin-top: 15px;
+}
+
+.heart {
+    position: fixed;
+    bottom: -10px;
+    font-size: 24px;
+    animation: floatUp 5s linear infinite;
+}
+
+@keyframes floatUp {
+    0% {transform: translateY(0);}
+    100% {transform: translateY(-100vh);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Hey Piyu ❤️</h1>
+    <p>You are my today, tomorrow & forever 💕</p>
+
+    <img src="YOUR_PHOTO_LINK.jpg" alt="Our Love">
+
+    <p id="countdown"></p>
+
+    <p>Piyu, will you be my Valentine? 💘</p>
+
+    <button class="yes" onclick="showLove()">Yes 💖</button>
+    <button class="no" id="noBtn" onmouseover="moveButton()">No 😜</button>
+
+    <div id="message">
+        Piyu, I promise to love you more every single day ❤️🥰  
+        You are my greatest blessing ✨
+    </div>
+</div>
+
+<script>
+function showLove() {
+    document.getElementById("message").style.display = "block";
+}
+
+function moveButton() {
+    var button = document.getElementById("noBtn");
+    var x = Math.random() * (window.innerWidth - 100);
+    var y = Math.random() * (window.innerHeight - 50);
+    button.style.left = x + "px";
+    button.style.top = y + "px";
+}
+
+var countDownDate = new Date("Feb 14, 2026 00:00:00").getTime();
+
+var x = setInterval(function() {
+    var now = new Date().getTime();
+    var distance = countDownDate - now;
+
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+    document.getElementById("countdown").innerHTML =
+    "Countdown to Our Special Day 💕: " + days + "d " + hours + "h "
+    + minutes + "m ";
+
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("countdown").innerHTML =
+        "Happy Valentine's Day Piyu ❤️";
+    }
+}, 1000);
+
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = Math.random() * 3 + 3 + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 5000);
+}
+
+setInterval(createHeart, 500);
+</script>
+
+</body>
+</html>
